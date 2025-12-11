@@ -111,7 +111,8 @@ class UiTextHighlighter {
         const targetNodes = this.getTargetNodes(root, targetSelector);
 
         strs.forEach(str => {
-            const searchStr = str.toLowerCase();
+            const searchStr = str.trim().toLowerCase();
+            if(!searchStr.length){ return }
 
             const ranges = targetNodes
                 .map(el => ({ el, text: el.textContent.toLowerCase() }))

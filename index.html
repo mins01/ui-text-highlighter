@@ -47,6 +47,7 @@
         function testHighlight(){
             // uth01.targetSelector ='*'; // 설정 변경
             // uth01.cssHighlightName = 'ui-text-highlighter'; // 설정 변경
+            uth01.highlight(''); // 빈 문자열인 경우
             uth01.highlight('바람'); // 이건 하이라이트가 사라진다.
             uth01.highlight('살짝'); //
             uth01.highlight(['분다','코드','하루','오후'],'ui-text-highlighter-01','.highlighter-target')

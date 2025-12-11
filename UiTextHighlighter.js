@@ -96,6 +96,9 @@ class UiTextHighlighter {
      * @returns {void}
      */
     static highlight(root, strs, cssHighlightName = this.cssHighlightName, targetSelector = this.targetSelector ) {
+        if (!CSS.highlights) {
+            throw new Error("CSS Custom Highlight API not supported.");
+        }
         if (cssHighlightName === null) {
             cssHighlightName = this.cssHighlightName;
         }

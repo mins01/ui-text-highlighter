@@ -46,7 +46,7 @@
         })
         function testHighlight(){
             // uth01.targetSelector ='*'; // 설정 변경
-            // uth01.cssHighlightName = 'ui-text-highlighter'; // 설정 변경
+            // uth01.cssHighlightKey = 'ui-text-highlighter'; // 설정 변경
             uth01.highlight(''); // 빈 문자열인 경우
             uth01.highlight('바람'); // 이건 하이라이트가 사라진다.
             uth01.highlight('살짝'); //
@@ -70,7 +70,7 @@
         }
         ::highlight(ui-text-highlighter-02) {
             /* background-color: green; */
-            text-shadow:0px 0px 5px #ff000099
+            text-shadow:0px 0px 5px #ff0000
         }
         ::highlight(ui-text-highlighter-03) {
             background-color: rgba(128, 0, 128, 0.418);
@@ -94,11 +94,18 @@
                 <a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/API/CSS_Custom_Highlight_API">CSS Custom Highlight API</a>
             </li>
             <li class="list-group-item">Highlight API 를 사용하여 특정 단어를 강조한다. (HTML 이 변경되지 않는다.)</li>
-            <li class="list-group-item">같은 cssHighlightName 로 재호출하면 이전 하이라이트는 사라진다.</li>
-            <li class="list-group-item">
+            <li class="list-group-item">같은 cssHighlightKey 로 재호출하면 이전 하이라이트는 사라진다.</li>
+            <li class="list-group-item d-flex gap-1 flex-wrap">
                 <button type="button" class="btn btn-primary" onclick="testHighlight()">testHighlight</button>
-                <button type="button" class="btn btn-primary" onclick="uth01.clear()">clear</button>
-                <button type="button" class="btn btn-primary" onclick="UiTextHighlighter.clear()" >clear</button>
+                <hr class="m-0 w-100">
+                <button type="button" class="btn btn-primary" onclick="uth01.delete()" >uth01.delete()</button>
+                <button type="button" class="btn btn-primary" onclick="uth01.delete('ui-text-highlighter-01')" >uth01.delete('ui-text-highlighter-01')</button>
+                <button type="button" class="btn btn-primary" onclick="UiTextHighlighter.delete('ui-text-highlighter-01')" >UiTextHighlighter.delete('ui-text-highlighter-01')</button>
+                <button type="button" class="btn btn-primary" onclick="UiTextHighlighter.delete('ui-text-highlighter-02')" >UiTextHighlighter.delete('ui-text-highlighter-02')</button>
+                <button type="button" class="btn btn-primary" onclick="UiTextHighlighter.delete('ui-text-highlighter-03')" >UiTextHighlighter.delete('ui-text-highlighter-03')</button>
+                <hr class="m-0 w-100">
+                <button type="button" class="btn btn-primary" onclick="uth01.clear()">uth01.clear()</button>
+                <button type="button" class="btn btn-primary" onclick="UiTextHighlighter.clear()" >UiTextHighlighter.clear()</button>
             </li>
         </ul>
         

@@ -10,14 +10,14 @@ class UiTextHighlighter {
     root = null;
 
     /** @type {string} */
-    cssHighlightName = 'ui-text-highlighter';
+    cssHighlightKey = 'ui-text-highlighter';
 
     /** @type {string} */
     targetSelector = '*';
 
     
     /** @type {string} */
-    static cssHighlightName = 'ui-text-highlighter';
+    static cssHighlightKey = 'ui-text-highlighter';
 
     /** @type {string} */
     static targetSelector = '*';
@@ -34,7 +34,7 @@ class UiTextHighlighter {
             throw new Error("CSS Custom Highlight API not supported.");
         }
         this.root = root;
-        this.cssHighlightName = this.constructor.cssHighlightName;
+        this.cssHighlightKey = this.constructor.cssHighlightKey;
         this.targetSelector = this.constructor.targetSelector;
     }
 
@@ -91,16 +91,16 @@ class UiTextHighlighter {
      * @static
      * @param {HTMLElement|Document|Element} root - 대상 루트
      * @param {string|string[]} strs - 검색할 문자열 또는 문자열 배열
-     * @param {string} [cssHighlightName=this.cssHighlightName] - highlight 이름
+     * @param {string} [cssHighlightKey=this.cssHighlightKey] - highlight 이름
      * @param {string} [targetSelector=this.targetSelector] - 타겟 제한 선택자
      * @returns {void}
      */
-    static highlight(root, strs, cssHighlightName = this.cssHighlightName, targetSelector = this.targetSelector ) {
+    static highlight(root, strs, cssHighlightKey = this.cssHighlightKey, targetSelector = this.targetSelector ) {
         if (!CSS.highlights) {
             throw new Error("CSS Custom Highlight API not supported.");
         }
-        if (cssHighlightName === null) {
-            cssHighlightName = this.cssHighlightName;
+        if (cssHighlightKey === null) {
+            cssHighlightKey = this.cssHighlightKey;
         }
 
         if (!Array.isArray(strs)) {
@@ -139,19 +139,19 @@ class UiTextHighlighter {
         });
 
         const searchResultsHighlight = new Highlight(...allRanges.flat());
-        CSS.highlights.set(cssHighlightName, searchResultsHighlight);
+        CSS.highlights.set(cssHighlightKey, searchResultsHighlight);
     }
 
     /**
      * 인스턴스 root 기준 하이라이트 수행
      *
      * @param {string|string[]} str - 검색할 문자열 또는 문자열 배열
-     * @param {string} [cssHighlightName=this.cssHighlightName]
+     * @param {string} [cssHighlightKey=this.cssHighlightKey]
      * @param {string} [targetSelector=this.targetSelector]
      * @returns {void}
      */
-    highlight(str, cssHighlightName = this.cssHighlightName , targetSelector = this.targetSelector ) {
-        return this.constructor.highlight(this.root, str, cssHighlightName,  targetSelector);
+    highlight(str, cssHighlightKey = this.cssHighlightKey , targetSelector = this.targetSelector ) {
+        return this.constructor.highlight(this.root, str, cssHighlightKey,  targetSelector);
     }
 
     /**
@@ -171,5 +171,13 @@ class UiTextHighlighter {
      */
     clear() {
         return this.constructor.clear();
+    }
+
+    static delete(cssHighlightKey){
+        CSS.highlights.delete(cssHighlightKey);
+    }
+
+    delete(cssHighlightKey=this.cssHighlightKey) {
+        return this.constructor.delete(cssHighlightKey);
     }
 }

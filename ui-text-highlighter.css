@@ -1,0 +1,17 @@
+@charset "utf-8";
+
+/* ::highlight(ui-text-highlighter-ex) {
+    color
+    background-color
+    text-decoration
+    text-shadow
+    -webkit-text-stroke-color
+    -webkit-text-fill-color
+    -webkit-text-stroke-width
+} */
+
+
+::highlight(ui-text-highlighter) {
+  background-color: #aabbcc;
+  color: rgb(12, 56, 201);
+}
